@@ -21,10 +21,6 @@
         }
       },
       {
-          "step": "defineSiteUrl",
-          "siteUrl": "https://developer.gatherpres.org"
-      },
-      {
         "step": "login",
         "username": "admin",
         "password": "password"
@@ -37,6 +33,16 @@
         },
         "options": {
           "activate": false
+        }
+      },
+      {
+        "step": "installTheme",
+        "themeZipFile": {
+            "resource": "url",
+            "url": "https://raw.githubusercontent.com/carstingaxion/gatherpress-devhub/main/zips/wporg-developer-2023.zip"
+        },
+        "options": {
+            "activate": true
         }
       }
     ]
