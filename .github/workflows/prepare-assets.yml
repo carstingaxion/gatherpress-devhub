@@ -30,7 +30,7 @@ jobs:
             ${{ runner.os }}-composer-
 
       - name: Install Composer dependencies
-        run: composer install
+        run: composer install --working-dir "${{ github.workspace }}/phpdoc-parser"
 
       - name: Revert to previous directory.
         run: cd ..
