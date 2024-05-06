@@ -17,10 +17,20 @@ jobs:
       - name: Change into phpdoc-parser directory.
         run: cd phpdoc-parser
 
-      - name: Install composer packages.
-        uses: php-actions/composer@v6
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - name: Configure Composer cache
+        uses: actions/cache@v4
         with:
-          container_workdir: './'
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
+      - name: Install Composer dependencies
+        run: composer install
 
       - name: Revert to previous directory.
         run: cd ..
