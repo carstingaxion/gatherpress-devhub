@@ -1,6 +1,6 @@
 {
     "$schema": "https://playground.wordpress.net/blueprint-schema.json",
-    "landingPage": "https://playground.wordpress.net/",
+    "landingPage": "https://playground.wordpress.net/wp-admin/",
     "preferredVersions": {
       "php": "8.2",
       "wp": "6.5"
@@ -38,13 +38,42 @@
       {
         "step": "installTheme",
         "themeZipFile": {
-            "resource": "url",
-            "url": "https://raw.githubusercontent.com/carstingaxion/gatherpress-devhub/main/zips/wporg-developer-2023.zip"
+          "resource": "url",
+          "url": "https://raw.githubusercontent.com/carstingaxion/gatherpress-devhub/main/zips/wporg-developer-2023.zip"
         },
         "options": {
-            "activate": true
+          "activate": false
         }
-      }
+      },
+          {
+              "step": "mkdir",
+              "path": "/wordpress/assets"
+          },
+          {
+              "step": "writeFile",
+              "path": "/wordpress/wp-content/assets.zip",
+              "data": {
+                  "resource": "url",
+                  "url": "https://github.com/carstingaxion/gatherpress-devhub/actions/runs/8974176983/artifacts/1477583114",
+                  "caption": "Downloading CI/CD prepared assets."
+              },
+              "progress": {
+                  "weight": 2,
+                  "caption": "Applying CI/CD prepared assets."
+              }
+          },
+          {
+              "step": "unzip",
+              "zipFile": {
+                "resource": "vfs",
+                "path": "/wordpress/wp-content/assets.zip"
+              },
+              "extractToPath": "/wordpress/wp-content"
+          },
+          {
+            "step": "wp-cli",
+            "command": "wp plugin activate phpdoc-parser"
+        }
     ]
   }
   
