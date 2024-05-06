@@ -1,6 +1,7 @@
 name: Generate Playground Assets
 
-on: [ push ]
+on:
+  workflow_dispatch:
 
 jobs:
   generate-playground-assets:
