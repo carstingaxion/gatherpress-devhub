@@ -7,28 +7,36 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
       - name: Clone phpdoc-parser source.
         uses: actions/checkout@v4
         with:
           repository: 'WordPress/phpdoc-parser'
           path: 'phpdoc-parser'
+
       - name: Change into phpdoc-parser directory.
         run: cd phpdoc-parser
+
       - name: Install composer packages.
         uses: php-actions/composer@v6
+          container_workdir: '.'
+
       - name: Revert to previous directory.
         run: cd ..
+
       - name: Clone GatherPress sourcecode.
         uses: actions/checkout@v4
         with:
           repository: 'GatherPress/gatherpress'
           path: 'gatherpress'
+
       - name: Copy built assets into ZIP for extraction inside Playground.
         run: |
           mkdir -p assets/vendor
           mkdir -p assets/wp-content/uploads/gatherpress
           cp -r gatherpress/src assets/wp-content/uploads/gatherpress
           cp -r phpdoc-parser/vendor assets/vendor
+
       - name: Create downloadable artifact.
         uses: actions/upload-artifact@v4
         with:
