@@ -20,7 +20,7 @@ jobs:
       - name: Install composer packages.
         uses: php-actions/composer@v6
         with:
-          args: --container_workdir "."
+          container_workdir: '.'
 
       - name: Revert to previous directory.
         run: cd ..
