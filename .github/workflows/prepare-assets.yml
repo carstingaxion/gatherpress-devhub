@@ -26,6 +26,7 @@ jobs:
 
       - name: Copy themes.
         run: |
+          mkdir wp-content/themes
           mv -fv temp/wporg-parent-2021/source/wp-content/themes/wporg-parent-2021 wp-content/themes/wporg-parent-2021
           mv -fv temp/wporg-developer-2023/source/wp-content/themes/wporg-developer-2023 wp-content/themes/wporg-developer-2023
           rm -rf temp
