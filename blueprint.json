@@ -49,6 +49,10 @@
           {
             "step": "wp-cli",
             "command": "wp plugin activate phpdoc-parser"
+        },
+        {
+          "step": "wp-cli",
+          "command": "wp parser create '/wordpress/wp-content/plugins/gatherpress' --user=1"
         }
     ]
   }
