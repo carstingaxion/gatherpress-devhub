@@ -48,12 +48,12 @@ jobs:
             ${{ runner.os }}-composer-
 
       - name: Install Composer dependencies
-        run: composer install --ignore-platform-req=php+ --working-dir "${{ github.workspace }}/assets/plugins/phpdoc-parser"
+        run: composer install --ignore-platform-req=php+ --working-dir "${{ github.workspace }}/wp-content/plugins/phpdoc-parser"
 
       - name: Copy built assets into ZIP for extraction inside Playground.
         run: |
-          zip -r zips/playground-assets.zip assets -x "*.git*,*.mp4"
-          rm -rf assets
+          zip -r zips/playground-assets.zip wp-content -x "*.git*,*.mp4"
+          rm -rf wp-content
 
       - uses: EndBug/add-and-commit@v9
         with:
