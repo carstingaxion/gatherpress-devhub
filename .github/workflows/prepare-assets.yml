@@ -1,6 +1,7 @@
 name: Generate Playground Assets
 
 on:
+  push:
   workflow_dispatch:
 
 jobs:
@@ -52,7 +53,7 @@ jobs:
 
       - name: Copy built assets into ZIP for extraction inside Playground.
         run: |
-          zip -r zips/playground-assets.zip wp-content -x "/*.git/*"
+          zip -r zips/playground-assets.zip wp-content -x "*.git*"
           rm -rf wp-content
 
       - uses: EndBug/add-and-commit@v9
