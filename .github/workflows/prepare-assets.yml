@@ -8,30 +8,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout repo.
+        uses: actions/checkout@v4
 
       - name: Clone wporg-parent-2021 parent theme sourcecode.
         uses: actions/checkout@v4
         with:
           repository: 'WordPress/wporg-parent-2021'
-          path: 'wporg-parent-2021'
+          path: 'assets/themes/wporg-parent-2021'
 
       - name: Clone wporg-developer-2023 theme sourcecode.
         uses: actions/checkout@v4
         with:
           repository: 'WordPress/wporg-developer'
-          path: 'wporg-developer-2023'
+          path: 'assets/themes/wporg-developer-2023'
 
       - name: Clone GatherPress sourcecode.
         uses: actions/checkout@v4
         with:
           repository: 'GatherPress/gatherpress'
-          path: 'gatherpress'
+          path: 'assets/plugins/gatherpress'
 
       - name: Clone phpdoc-parser source.
         uses: actions/checkout@v4
         with:
           repository: 'WordPress/phpdoc-parser'
-          path: 'phpdoc-parser'
+          path: 'assets/plugins/phpdoc-parser'
 
       - name: Get Composer Cache Directory
         id: composer-cache
@@ -46,23 +48,13 @@ jobs:
             ${{ runner.os }}-composer-
 
       - name: Install Composer dependencies
-        run: composer install --ignore-platform-req=php+ --working-dir "${{ github.workspace }}/phpdoc-parser"
+        run: composer install --ignore-platform-req=php+ --working-dir "${{ github.workspace }}/assets/plugins/phpdoc-parser"
 
       - name: Copy built assets into ZIP for extraction inside Playground.
         run: |
-          mkdir -p wp-content/vendor
-          mkdir -p wp-content/plugins/gatherpress
-          mkdir -p wp-content/plugins/phpdoc-parser
-          mkdir -p wp-content/themes/wporg-parent-2021
-          mkdir -p wp-content/themes/wporg-developer-2023
-          cp -r phpdoc-parser/vendor wp-content/vendor
-          cp -r gatherpress wp-content/plugins/gatherpress
-          cp -r phpdoc-parser wp-content/plugins/phpdoc-parser
-          cp -r wporg-parent-2021/source/wp-content/themes/wporg-parent-2021 wp-content/themes/wporg-parent-2021
-          cp -r wporg-developer-2023/source/wp-content/themes/wporg-developer-2023 wp-content/themes/wporg-developer-2023
+          zip -r zips/playground-assets.zip assets -x "*.git*"
+          rm -rf assets
 
-      - name: Create downloadable artifact.
-        uses: actions/upload-artifact@v4
+      - uses: EndBug/add-and-commit@v9
         with:
-          name: playground-assets
-          path: assets
+          message: 'Persist prepared assets'

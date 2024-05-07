@@ -25,36 +25,12 @@
         "username": "admin",
         "password": "password"
       },
-      {
-        "step": "installPlugin",
-        "pluginZipFile": {
-          "resource": "url",
-          "url": "https://raw.githubusercontent.com/carstingaxion/gatherpress-demo-data/main/gatherpress-0.28.0.zip"
-        },
-        "options": {
-          "activate": false
-        }
-      },
-      {
-        "step": "installTheme",
-        "themeZipFile": {
-          "resource": "url",
-          "url": "https://raw.githubusercontent.com/carstingaxion/gatherpress-devhub/main/zips/wporg-developer-2023.zip"
-        },
-        "options": {
-          "activate": false
-        }
-      },
-          {
-              "step": "mkdir",
-              "path": "/wordpress/assets"
-          },
           {
               "step": "writeFile",
-              "path": "/wordpress/wp-content/assets.zip",
+              "path": "/wordpress/assets.zip",
               "data": {
                   "resource": "url",
-                  "url": "https://github.com/carstingaxion/gatherpress-devhub/actions/runs/8974176983/artifacts/1477583114",
+                  "url": "https://raw.githubusercontent.com/carstingaxion/gatherpress-devhub/main/zips/playground-assets.zip",
                   "caption": "Downloading CI/CD prepared assets."
               },
               "progress": {
@@ -66,7 +42,7 @@
               "step": "unzip",
               "zipFile": {
                 "resource": "vfs",
-                "path": "/wordpress/wp-content/assets.zip"
+                "path": "/wordpress/assets.zip"
               },
               "extractToPath": "/wordpress/wp-content"
           },
