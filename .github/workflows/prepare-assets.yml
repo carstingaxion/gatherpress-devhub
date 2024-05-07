@@ -16,13 +16,19 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: 'WordPress/wporg-parent-2021'
-          path: 'wp-content/themes/wporg-parent-2021'
+          path: 'temp/wporg-parent-2021'
 
       - name: Clone wporg-developer-2023 theme sourcecode.
         uses: actions/checkout@v4
         with:
           repository: 'WordPress/wporg-developer'
-          path: 'wp-content/themes/wporg-developer-2023'
+          path: 'temp/wporg-developer-2023'
+
+      - name: Copy themes.
+        run: |
+          mv -r temp/wporg-parent-2021/source/wp-content/themes/wporg-parent-2021 wp-content/themes/wporg-parent-2021
+          mv -r temp/wporg-developer-2023/source/wp-content/themes/wporg-developer-2023 wp-content/themes/wporg-developer-2023
+          rm -rf temp
 
       - name: Clone GatherPress sourcecode.
         uses: actions/checkout@v4
