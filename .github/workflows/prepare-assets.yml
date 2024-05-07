@@ -12,24 +12,19 @@ jobs:
       - name: Checkout repo.
         uses: actions/checkout@v4
 
-      - name: Clone wporg-parent-2021 parent theme sourcecode.
-        uses: actions/checkout@v4
-        with:
-          repository: 'WordPress/wporg-parent-2021'
-          path: 'temp/wporg-parent-2021'
-
       - name: Clone wporg-developer-2023 theme sourcecode.
         uses: actions/checkout@v4
         with:
           repository: 'WordPress/wporg-developer'
           path: 'temp/wporg-developer-2023'
 
+      - name: Install Composer dependencies
+        run: composer install --ignore-platform-req=php+ --working-dir "${{ github.workspace }}/temp/wporg-developer-2023"
+
       - name: Copy themes.
         run: |
           mkdir wp-content
-          mkdir wp-content/themes
-          mv -fv temp/wporg-parent-2021/source/wp-content/themes/wporg-parent-2021 wp-content/themes/wporg-parent-2021
-          mv -fv temp/wporg-developer-2023/source/wp-content/themes/wporg-developer-2023 wp-content/themes/wporg-developer-2023
+          mv -fv temp/wporg-developer-2023/source/wp-content .
           rm -rf temp
 
       - name: Clone GatherPress sourcecode.
@@ -37,12 +32,6 @@ jobs:
         with:
           repository: 'GatherPress/gatherpress'
           path: 'wp-content/plugins/gatherpress'
-
-      - name: Clone phpdoc-parser source.
-        uses: actions/checkout@v4
-        with:
-          repository: 'WordPress/phpdoc-parser'
-          path: 'wp-content/plugins/phpdoc-parser'
 
       - name: Get Composer Cache Directory
         id: composer-cache
@@ -56,12 +45,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-composer-
 
-      - name: Install Composer dependencies
-        run: composer install --ignore-platform-req=php+ --working-dir "${{ github.workspace }}/wp-content/plugins/phpdoc-parser"
-
       - name: Copy built assets into ZIP for extraction inside Playground.
         run: |
-          zip -FSr zips/playground-assets.zip wp-content -x "*.git*" "*.mp4*"
+          zip -FSr zips/playground-assets.zip wp-content -x "*.git*" "*.mp4*" "*/jetpack/"
           rm -rf wp-content
 
       - uses: EndBug/add-and-commit@v9
