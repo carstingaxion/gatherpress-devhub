@@ -15,25 +15,25 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: 'WordPress/wporg-parent-2021'
-          path: 'assets/themes/wporg-parent-2021'
+          path: 'wp-content/themes/wporg-parent-2021'
 
       - name: Clone wporg-developer-2023 theme sourcecode.
         uses: actions/checkout@v4
         with:
           repository: 'WordPress/wporg-developer'
-          path: 'assets/themes/wporg-developer-2023'
+          path: 'wp-content/themes/wporg-developer-2023'
 
       - name: Clone GatherPress sourcecode.
         uses: actions/checkout@v4
         with:
           repository: 'GatherPress/gatherpress'
-          path: 'assets/plugins/gatherpress'
+          path: 'wp-content/plugins/gatherpress'
 
       - name: Clone phpdoc-parser source.
         uses: actions/checkout@v4
         with:
           repository: 'WordPress/phpdoc-parser'
-          path: 'assets/plugins/phpdoc-parser'
+          path: 'wp-content/plugins/phpdoc-parser'
 
       - name: Get Composer Cache Directory
         id: composer-cache
@@ -52,7 +52,7 @@ jobs:
 
       - name: Copy built assets into ZIP for extraction inside Playground.
         run: |
-          zip -r zips/playground-assets.zip assets -x "*.git*"
+          zip -r zips/playground-assets.zip assets -x "*.git*,*.mp4"
           rm -rf assets
 
       - uses: EndBug/add-and-commit@v9
