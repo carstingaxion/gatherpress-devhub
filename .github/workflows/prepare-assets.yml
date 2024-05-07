@@ -52,7 +52,7 @@ jobs:
 
       - name: Copy built assets into ZIP for extraction inside Playground.
         run: |
-          zip -r zips/playground-assets.zip wp-content -x "*.git*" -x "*.mp4"
+          zip -r zips/playground-assets.zip wp-content -x "*.git*" -x "*.mp4*"
           rm -rf wp-content
 
       - uses: EndBug/add-and-commit@v9
