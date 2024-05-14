@@ -12,10 +12,10 @@ jobs:
       - name: Checkout repo.
         uses: actions/checkout@v4
 
-      - name: Clone wporg-developer-2023 theme sourcecode.
+      - name: Clone forked & modified wporg-developer-2023 theme sourcecode.
         uses: actions/checkout@v4
         with:
-          repository: 'WordPress/wporg-developer'
+          repository: 'carstingaxion/gatherpress-wporg-developer-theme'
           path: 'temp/wporg-developer-2023'
 
       - name: Install Composer dependencies
