@@ -46,6 +46,16 @@
       }
     },
     {
+      "step": "installPlugin",
+      "pluginZipFile": {
+        "resource": "wordpress.org/plugins",
+        "slug": "posts-to-posts"
+      },
+      "options": {
+        "activate": true
+      }
+    },
+    {
       "step": "writeFile",
       "path": "/wordpress/wporg-mu-plugins.zip",
       "data": {
@@ -85,8 +95,13 @@
       }
     },
     {
+      "step": "mv",
+      "fromPath": "/wordpress/wp-content/themes/wporg-parent-2021-build",
+      "toPath": "/wordpress/wp-content/themes/wporg-parent-2021"
+    },
+    {
       "step": "writeFile",
-      "path": "/wordpress/wp-content/themes/wporg-parent-2021-build/functions.php",
+      "path": "/wordpress/wp-content/themes/wporg-parent-2021/functions.php",
       "data": {
         "resource": "url",
         "url": "https://raw.githubusercontent.com/carstingaxion/gatherpress-devhub/WIP/use-build-deps/wp-content/themes/wporg-parent-2021-build/functions.php"

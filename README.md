@@ -12,4 +12,4 @@
 ## Learnings
 
 1. Needs to run php 7.4
-2. 
+2. Activate Posts-to-Posts after phpdoc-parser, because of clashing dependencies
