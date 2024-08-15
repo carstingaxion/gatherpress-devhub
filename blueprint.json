@@ -13,6 +13,11 @@
     },
     "steps": [
       {
+        "step": "login",
+        "username": "admin",
+        "password": "password"
+      },
+      {
         "step": "setSiteOptions",
         "options": {
           "blogname": "GatherPress devhub",
@@ -21,9 +26,14 @@
         }
       },
       {
-        "step": "login",
-        "username": "admin",
-        "password": "password"
+        "step": "installPlugin",
+        "pluginZipFile": {
+          "resource": "wordpress.org/plugins",
+          "slug": "gatherpress"
+        },
+        "options": {
+          "activate": false
+        }
       },
       {
           "step": "writeFile",
@@ -44,7 +54,7 @@
           "resource": "vfs",
           "path": "/wordpress/wporg-mu-plugins.zip"
         },
-        "extractToPath": "/wordpress/wp-content/mu-plugins"
+        "extractToPath": "/wordpress/wp-content"
       },
       {
         "step": "writeFile",
@@ -72,16 +82,31 @@
         }
       },
       {
-        "step": "installPlugin",
-        "pluginZipFile": {
-          "resource": "url",
-          "url": "https://github-proxy.com/proxy/?repo=WordPress/phpdoc-parser&branch=master"
+        "step": "writeFile",
+        "path": "/wordpress/phpdoc-parser.zip",
+        "data": {
+            "resource": "url",
+            "url": "https://raw.githubusercontent.com/carstingaxion/gatherpress-devhub/WIP/use-build-deps/zips/phpdoc-parser.zip",
+            "caption": "Downloading phpdoc-parser."
         },
-        "options": {
-          "activate": true
+        "progress": {
+            "weight": 2,
+            "caption": "Applying phpdoc-parser."
         }
+    },
+    {
+      "step": "unzip",
+      "zipFile": {
+        "resource": "vfs",
+        "path": "/wordpress/phpdoc-parser.zip"
       },
-      {
+      "extractToPath": "/wordpress"
+    },
+    {
+      "step": "wp-cli",
+      "command": "wp plugin activate phpdoc-parser"
+    },
+    {
         "step": "wp-cli",
         "command": "wp parser create '/wordpress/wp-content/plugins/gatherpress' --user=1"
       }
