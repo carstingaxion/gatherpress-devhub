@@ -36,6 +36,16 @@
       }
     },
     {
+      "step": "installPlugin",
+      "pluginZipFile": {
+        "resource": "wordpress.org/plugins",
+        "slug": "code-syntax-block"
+      },
+      "options": {
+        "activate": true
+      }
+    },
+    {
       "step": "writeFile",
       "path": "/wordpress/wporg-mu-plugins.zip",
       "data": {
@@ -68,7 +78,18 @@
       "step": "installTheme",
       "themeZipFile": {
         "resource": "url",
-        "url": "https://github-proxy.com/proxy/?repo=wporg-parent-2021&branch=build"
+        "url": "https://github-proxy.com/proxy/?repo=WordPress/wporg-parent-2021&branch=build"
+      },
+      "options": {
+        "activate": false
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/wporg-parent-2021-build/functions.php",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/carstingaxion/gatherpress-devhub/WIP/use-build-deps/wp-content/themes/wporg-parent-2021-build/functions.php"
       }
     },
     {
@@ -105,6 +126,10 @@
     {
       "step": "wp-cli",
       "command": "wp plugin activate phpdoc-parser"
+    },
+    {
+      "step": "wp-cli",
+      "command": "wp rewrite flush"
     },
     {
       "step": "wp-cli",
