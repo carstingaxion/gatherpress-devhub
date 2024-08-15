@@ -46,16 +46,6 @@
       }
     },
     {
-      "step": "installPlugin",
-      "pluginZipFile": {
-        "resource": "wordpress.org/plugins",
-        "slug": "posts-to-posts"
-      },
-      "options": {
-        "activate": true
-      }
-    },
-    {
       "step": "writeFile",
       "path": "/wordpress/wporg-mu-plugins.zip",
       "data": {
@@ -141,6 +131,16 @@
     {
       "step": "wp-cli",
       "command": "wp plugin activate phpdoc-parser"
+    },
+    {
+      "step": "installPlugin",
+      "pluginZipFile": {
+        "resource": "wordpress.org/plugins",
+        "slug": "posts-to-posts"
+      },
+      "options": {
+        "activate": true
+      }
     },
     {
       "step": "wp-cli",
