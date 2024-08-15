@@ -6,3 +6,10 @@
 - [WordPress devhub blueprint · Issue #44 · WordPress/blueprints](https://github.com/WordPress/blueprints/issues/44)
 
 [<kbd> <br> Edit <code>blueprint.json</code> <br> </kbd>](https://playground.wordpress.net/builder/builder.html?blueprint-url=https://raw.githubusercontent.com/carstingaxion/gatherpress-devhub/main/blueprint.json)
+
+---
+
+## Learnings
+
+1. Needs to run php 7.4
+2. 

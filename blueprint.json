@@ -25,38 +25,65 @@
         "username": "admin",
         "password": "password"
       },
-          {
-              "step": "writeFile",
-              "path": "/wordpress/assets.zip",
-              "data": {
-                  "resource": "url",
-                  "url": "https://raw.githubusercontent.com/carstingaxion/gatherpress-devhub/main/zips/playground-assets.zip",
-                  "caption": "Downloading CI/CD prepared assets."
-              },
-              "progress": {
-                  "weight": 2,
-                  "caption": "Applying CI/CD prepared assets."
-              }
+      {
+          "step": "writeFile",
+          "path": "/wordpress/wporg-mu-plugins.zip",
+          "data": {
+              "resource": "url",
+              "url": "https://github-proxy.com/proxy/?repo=WordPress/wporg-mu-plugins&branch=build&directory=mu-plugins",
+              "caption": "Downloading wporg-mu-plugins."
           },
-          {
-              "step": "unzip",
-              "zipFile": {
-                "resource": "vfs",
-                "path": "/wordpress/assets.zip"
-              },
-              "extractToPath": "/wordpress"
-          },
-          {
-            "step": "wp-cli",
-            "command": "wp plugin activate phpdoc-parser"
+          "progress": {
+              "weight": 2,
+              "caption": "Applying wporg-mu-plugins."
+          }
+      },
+      {
+        "step": "unzip",
+        "zipFile": {
+          "resource": "vfs",
+          "path": "/wordpress/wporg-mu-plugins.zip"
         },
-        {
-          "step": "wp-cli",
-          "command": "wp parser create '/wordpress/wp-content/plugins/gatherpress' --user=1"
+        "extractToPath": "/wordpress/wp-content/mu-plugins"
+      },
+      {
+        "step": "writeFile",
+        "path": "/wordpress/wp-content/mu-plugins/loader.php",
+        "data": {
+          "resource": "url",
+          "url": "https://raw.githubusercontent.com/carstingaxion/gatherpress-devhub/WIP/use-build-deps/wp-content/mu-plugins/loader.php"
+        }
+      },
+      {
+        "step": "installTheme",
+        "themeZipFile": {
+          "resource": "url",
+          "url": "https://github-proxy.com/proxy/?repo=wporg-parent-2021&branch=build"
+        }
+      },
+      {
+        "step": "installTheme",
+        "themeZipFile": {
+          "resource": "url",
+          "url": "https://github-proxy.com/proxy/?repo=WordPress/wporg-developer&branch=build"
         },
-        {
-          "step": "wp-cli",
-          "command": "wp theme activate wporg-developer-2023"
+        "options": {
+          "activate": true
+        }
+      },
+      {
+        "step": "installPlugin",
+        "pluginZipFile": {
+          "resource": "url",
+          "url": "https://github-proxy.com/proxy/?repo=WordPress/phpdoc-parser&branch=master"
+        },
+        "options": {
+          "activate": true
+        }
+      },
+      {
+        "step": "wp-cli",
+        "command": "wp parser create '/wordpress/wp-content/plugins/gatherpress' --user=1"
       }
     ]
   }
