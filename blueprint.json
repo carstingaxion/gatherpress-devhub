@@ -38,6 +38,16 @@
     {
       "step": "installPlugin",
       "pluginZipFile": {
+        "resource": "url",
+        "url": "https://github-proxy.com/proxy/?repo=GatherPress/gatherpress-alpha&branch=main"
+      },
+      "options": {
+        "activate": false
+      }
+    },
+    {
+      "step": "installPlugin",
+      "pluginZipFile": {
         "resource": "wordpress.org/plugins",
         "slug": "code-syntax-block"
       },
@@ -149,6 +159,10 @@
     {
       "step": "wp-cli",
       "command": "wp parser create '/wordpress/wp-content/plugins/gatherpress' --user=1"
+    },
+    {
+      "step": "wp-cli",
+      "command": "wp parser create '/wordpress/wp-content/plugins/gatherpress-alpha-main' --user=1"
     }
   ]
 }
