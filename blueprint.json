@@ -1,9 +1,9 @@
 {
   "$schema": "https://playground.wordpress.net/blueprint-schema.json",
-  "landingPage": "https://playground.wordpress.net/wp-admin/edit.php?post_type=wp-parser-class",
+  "landingPage": "/reference/",
   "preferredVersions": {
     "php": "7.4",
-    "wp": "6.5"
+    "wp": "latest"
   },
   "phpExtensionBundles": [
     "kitchen-sink"
@@ -13,9 +13,7 @@
   },
   "steps": [
     {
-      "step": "login",
-      "username": "admin",
-      "password": "password"
+      "step": "login"
     },
     {
       "step": "setSiteOptions",
@@ -81,7 +79,15 @@
       "path": "/wordpress/wp-content/mu-plugins/loader.php",
       "data": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/carstingaxion/gatherpress-devhub/WIP/use-build-deps/wp-content/mu-plugins/loader.php"
+        "url": "https://raw.githubusercontent.com/carstingaxion/gatherpress-devhub/WIP/use-build-deps/wp-content/mu-plugins/overwrites-wporg-muplugins-loader.php"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/mu-plugins/gatherpress_loader.php",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/carstingaxion/gatherpress-devhub/WIP/use-build-deps/wp-content/mu-plugins/gatherpress_loader.php"
       }
     },
     {
@@ -98,14 +104,6 @@
       "step": "mv",
       "fromPath": "/wordpress/wp-content/themes/wporg-parent-2021-build",
       "toPath": "/wordpress/wp-content/themes/wporg-parent-2021"
-    },
-    {
-      "step": "writeFile",
-      "path": "/wordpress/wp-content/themes/wporg-parent-2021/functions.php",
-      "data": {
-        "resource": "url",
-        "url": "https://raw.githubusercontent.com/carstingaxion/gatherpress-devhub/WIP/use-build-deps/wp-content/themes/wporg-parent-2021-build/functions.php"
-      }
     },
     {
       "step": "installTheme",
@@ -163,6 +161,10 @@
     {
       "step": "wp-cli",
       "command": "wp parser create '/wordpress/wp-content/plugins/gatherpress-alpha-main' --user=1"
+    },
+    {
+      "step": "wp-cli",
+      "command": "wp post update 2 --post_name=reference --post_title=Reference"
     }
   ]
 }
