@@ -135,7 +135,7 @@
     },
     {
       "step": "writeFile",
-      "path": "/wordpress/wp-content/themes/wporg-developer-build/build/code-source/block.php",
+      "path": "/wordpress/wp-content/themes/wporg-developer-build/src/code-source/block.php",
       "data": {
         "resource": "url",
         "url": "https://raw.githubusercontent.com/carstingaxion/gatherpress-devhub/WIP/use-build-deps/wp-content/themes/wporg-developer-2023/src/code-source/block.php"
