@@ -16,10 +16,10 @@ use WordPressdotorg\Theme\Parent_2021;
  * @param string $option        Option name.
  * @param mixed  $default_value The fallback value to return if the option does not exist. Default false.
  * @return mixed The value to return instead of the option value. This differs from <code>$default_value</code>, which is used as the fallback value in the event the option doesn't exist elsewhere in get_option(). Default false (to skip past the short-circuit).
- */
+
 add_filter( 'pre_option_wp_parser_imported_wp_version',function( $pre_option, string $option, $default_value ) {
     return '1.0.0';
-}, 10, 3 );
+}, 10, 3 ); */
 
 
 
