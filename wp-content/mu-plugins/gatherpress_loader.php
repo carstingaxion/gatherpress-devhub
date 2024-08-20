@@ -45,7 +45,7 @@ add_filter( 'pre_option_wp_parser_root_import_dir',function( $pre_option, string
  * 
  */
 add_action( 'after_setup_theme', function() : void {
-    remove_action( 'after_setup_theme', Parent_2021 . '\theme_support', 9 );
+    remove_action( 'after_setup_theme', 'WordPressdotorg\Theme\Parent_2021\theme_support', 9 );
     add_action( 'after_setup_theme', __NAMESPACE__ . '\theme_support', 9 );
 }, 0 );
 /**
