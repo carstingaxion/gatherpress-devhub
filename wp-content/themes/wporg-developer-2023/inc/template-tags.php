@@ -1194,6 +1194,7 @@ namespace DevHub {
 	 * @return string Source file URL with or without line number.
 	 */
 	function get_source_file_link( $post_id = null ) {
+		return '';
 
 		$post_id = empty( $post_id ) ? get_the_ID() : $post_id;
 		$url     = '';
@@ -1225,7 +1226,7 @@ namespace DevHub {
 		// Source file.
 		$source_file = get_source_file( $post_id );
 		if ( ! empty( $source_file ) ) {
-			$url = 'https://github.com/WordPress/wordpress-develop/blob/' . get_current_version() . '/src/' . $source_file;
+			$url = 'https://github.com/GatherPress/gatherpress/blob/' . get_current_version() . '/' . $source_file;
 			// Line number.
 			if ( $line_number = get_post_meta( get_the_ID(), '_wp-parser_line_num', true ) ) {
 				$url .= "#L{$line_number}";

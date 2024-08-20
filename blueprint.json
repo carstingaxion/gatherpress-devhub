@@ -47,6 +47,16 @@
       "step": "installPlugin",
       "pluginZipFile": {
         "resource": "wordpress.org/plugins",
+        "slug": "uncomment"
+      },
+      "options": {
+        "activate": true
+      }
+    },
+    {
+      "step": "installPlugin",
+      "pluginZipFile": {
+        "resource": "wordpress.org/plugins",
         "slug": "code-syntax-block"
       },
       "options": {
@@ -113,6 +123,14 @@
       },
       "options": {
         "activate": true
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/themes/wporg-developer-2023/functions.php",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/carstingaxion/gatherpress-devhub/WIP/use-build-deps/wp-content/themes/wporg-developer-2023-build/functions.php"
       }
     },
     {
