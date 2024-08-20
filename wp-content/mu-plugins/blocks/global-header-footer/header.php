@@ -79,7 +79,7 @@ function recursive_menu( $menu_item, $top_level = true ) {
 	*/
 	foreach ( $menu_items as $item ) {
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo recursive_menu( $item );
+		// echo recursive_menu( $item );
 	}
 	?>
 <!-- /wp:navigation -->
