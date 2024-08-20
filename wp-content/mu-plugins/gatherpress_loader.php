@@ -2,8 +2,6 @@
 
 namespace GatherPress\DevHub;
 
-use WordPressdotorg\Theme\Parent_2021;
-
 /**
  * Filter the version which is in charge for the ...
  * which is used here to prepare the stuff.
@@ -46,6 +44,10 @@ add_filter( 'pre_option_wp_parser_root_import_dir',function( $pre_option, string
 add_action( 'after_setup_theme', function() : void {
     remove_action( 'after_setup_theme', 'WordPressdotorg\Theme\Parent_2021\theme_support', 9 );
     add_action( 'after_setup_theme', __NAMESPACE__ . '\theme_support', 9 );
+
+
+	remove_filter( 'wporg_block_navigation_menus', 'DevHub\add_site_navigation_menus' );
+	add_filter( 'wporg_block_navigation_menus', __NAMESPACE__ . '\add_site_navigation_menus' );
 }, 0 );
 /**
  * Register theme support.
@@ -86,5 +88,32 @@ function theme_support() {
 		array(
 			'label' => __( 'WordPress.org', 'wporg' ),
 		)
+	);
+}
+
+
+
+/**
+ * Provide a list of local navigation menus.
+ */
+function add_site_navigation_menus( $menus ) {
+	// global $wp;
+	// $is_cli_home = ( is_archive() && isset( $wp->request ) && 'cli/commands' === $wp->request );
+	return array(
+		'developer' => array(
+			array(
+				'label' => __( 'GatherPress.org', 'wporg' ),
+				'url' => 'https://gatherpress.org/',
+			),
+			array(
+				'label' => __( 'Code Reference', 'wporg' ),
+				'url' => '/reference/',
+			),
+			// array(
+			// 	'label' => __( 'WP-CLI Commands', 'wporg' ),
+			// 	'url' => '/cli/commands/',
+			// 	'className' => $is_cli_home ? 'current-menu-item' : '',
+			// ),
+		),
 	);
 }

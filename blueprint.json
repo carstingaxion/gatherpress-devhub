@@ -19,7 +19,7 @@
       "step": "setSiteOptions",
       "options": {
         "blogname": "GatherPress devhub",
-        "blogdescription": "Powering Developers using GatherPress.",
+        "blogdescription": "Powering (developers to create) communities with WordPress",
         "permalink_structure": "/%year%/%monthnum%/%postname%/"
       }
     },
@@ -83,6 +83,14 @@
         "path": "/wordpress/wporg-mu-plugins.zip"
       },
       "extractToPath": "/wordpress/wp-content"
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/mu-plugins/blocks/global-header-footer/header.php",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/carstingaxion/gatherpress-devhub/WIP/use-build-deps/wp-content/mu-plugins/blocks/global-header-footer/header.php"
+      }
     },
     {
       "step": "writeFile",
