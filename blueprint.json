@@ -127,7 +127,7 @@
     },
     {
       "step": "writeFile",
-      "path": "/wordpress/wp-content/themes/wporg-developer-2023/inc/template-tags.php",
+      "path": "/wordpress/wp-content/themes/wporg-developer-build/inc/template-tags.php",
       "data": {
         "resource": "url",
         "url": "https://raw.githubusercontent.com/carstingaxion/gatherpress-devhub/WIP/use-build-deps/wp-content/themes/wporg-developer-2023/inc/template-tags.php"
