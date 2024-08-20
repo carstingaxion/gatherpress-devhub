@@ -5,6 +5,8 @@
 - [New developer.gatherpress.org · Issue #1 · carstingaxion/gatherpress-devhub](https://github.com/carstingaxion/gatherpress-devhub/issues/1)
 - [WordPress devhub blueprint · Issue #44 · WordPress/blueprints](https://github.com/WordPress/blueprints/issues/44)
 
+[<kbd> <br> GatherPress devhub <br> </kbd>](https://playground.wordpress.net/?mode=seamless&blueprint-url=https://raw.githubusercontent.com/carstingaxion/gatherpress-devhub/WIP/use-build-deps/blueprint.json)
+
 [<kbd> <br> Edit <code>blueprint.json</code> <br> </kbd>](https://playground.wordpress.net/builder/builder.html?blueprint-url=https://raw.githubusercontent.com/carstingaxion/gatherpress-devhub/WIP/use-build-deps/blueprint.json)
 
 ---
