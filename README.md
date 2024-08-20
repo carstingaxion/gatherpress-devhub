@@ -17,3 +17,15 @@
 
 1. Needs to run php 7.4
 2. Activate Posts-to-Posts after phpdoc-parser, because of clashing dependencies
+3. Running the parser in this order results in destroyed `<sourcecode>`. 
+    ```
+    {
+      "step": "wp-cli",
+      "command": "wp parser create '/wordpress/wp-content/plugins/gatherpress' --user=1"
+    },
+    {
+      "step": "wp-cli",
+      "command": "wp parser create '/wordpress/wp-content/plugins/gatherpress-alpha-main' --user=1"
+    },
+    ```
+    Running it in the opposite order, *only* destroys the source for the alpha-main plugin.

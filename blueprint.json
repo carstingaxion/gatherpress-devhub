@@ -182,11 +182,11 @@
     },
     {
       "step": "wp-cli",
-      "command": "wp parser create '/wordpress/wp-content/plugins/gatherpress' --user=1"
+      "command": "wp parser create '/wordpress/wp-content/plugins/gatherpress-alpha-main' --user=1"
     },
     {
       "step": "wp-cli",
-      "command": "wp parser create '/wordpress/wp-content/plugins/gatherpress-alpha-main' --user=1"
+      "command": "wp parser create '/wordpress/wp-content/plugins/gatherpress' --user=1"
     },
     {
       "step": "wp-cli",
