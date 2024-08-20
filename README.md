@@ -7,7 +7,7 @@
 
 [<kbd> <br> pre-built GatherPress devhub <br> </kbd>](https://playground.wordpress.net/?mode=seamless&blueprint-url=https://raw.githubusercontent.com/carstingaxion/gatherpress-devhub/WIP/use-build-deps/blueprint-import.json)
 
-[<kbd> <br> GatherPress devhub <br> </kbd>](https://playground.wordpress.net/?mode=seamless&blueprint-url=https://raw.githubusercontent.com/carstingaxion/gatherpress-devhub/WIP/use-build-deps/blueprint.json)
+[<kbd> <br> GatherPress devhub <br> </kbd>](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/carstingaxion/gatherpress-devhub/WIP/use-build-deps/blueprint.json)
 
 [<kbd> <br> Edit <code>blueprint.json</code> <br> </kbd>](https://playground.wordpress.net/builder/builder.html?blueprint-url=https://raw.githubusercontent.com/carstingaxion/gatherpress-devhub/WIP/use-build-deps/blueprint.json)
 

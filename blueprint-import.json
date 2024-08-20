@@ -16,12 +16,9 @@
       "step": "importWordPressFiles",
       "wordPressFilesZip": {
           "resource": "url",
-          "url": "https://raw.githubusercontent.com/carstingaxion/gatherpress-devhub/WIP/use-build-deps/zips/gatherpress-devhub__wordpress-playground.zip",
+          "url": "https://raw.githubusercontent.com/carstingaxion/gatherpress-devhub/WIP/use-build-deps/zips/gatherpress-devhub@be3e934.zip",
           "caption": "Import GatherPress devhub."
       }
-  },
-  {
-    "step": "login"
   }
   ]
 }
