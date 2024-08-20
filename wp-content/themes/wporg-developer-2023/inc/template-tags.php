@@ -1226,7 +1226,7 @@ namespace DevHub {
 		// Source file.
 		$source_file = get_source_file( $post_id );
 		if ( ! empty( $source_file ) ) {
-			$url = 'https://github.com/GatherPress/gatherpress/blob/' . get_current_version() . '/' . $source_file;
+			$url = 'https://github.com/GatherPress/gatherpress/blob/' . get_current_version() . '/' . $source_file; ##### CB ### CHANGES FOR GATHERPRESS, obviously ...
 			// Line number.
 			if ( $line_number = get_post_meta( get_the_ID(), '_wp-parser_line_num', true ) ) {
 				$url .= "#L{$line_number}";
